@@ -1,0 +1,31 @@
+{
+  "name": "web-monorepo-templates",
+  "private": true,
+  "packageManager": "pnpm@10.28.2",
+  "scripts": {
+    "build": "turbo run build",
+    "dev": "turbo run dev",
+    "lint": "turbo run lint",
+    "lint:style": "turbo run lint:style",
+    "lint:staged": "lint-staged",
+    "format": "prettier --write",
+    "prepare": "husky",
+    "commitlint": "commitlint --edit"
+  },
+  "devDependencies": {
+    "@commitlint/cli": "^20.3.1",
+    "@commitlint/config-conventional": "^20.3.1",
+    "husky": "^9.1.7",
+    "lint-staged": "^16.2.7",
+    "prettier": "^3.2.5",
+    "stylelint": "^17.0.0",
+    "turbo": "^2.7.4",
+    "typescript": "^5.9.3"
+  },
+  "lint-staged": {
+    "**/*.{json,md,html,js,mjs,cjs,ts,cts,mts,jsx,tsx,vue}": [
+      "prettier --write",
+      "prettier"
+    ]
+  }
+}

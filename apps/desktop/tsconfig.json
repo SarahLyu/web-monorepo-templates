@@ -1,0 +1,7 @@
+{
+  "extends": "@repo/typescript-config/vite.json",
+  "include": ["src", "eslint.config.mjs", "vite.config.ts"],
+  "compilerOptions": {
+    "jsx": "react-jsx"
+  }
+}

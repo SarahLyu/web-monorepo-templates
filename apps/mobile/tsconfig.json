@@ -1,0 +1,8 @@
+{
+  "extends": "@repo/typescript-config/vue-library.json",
+  "compilerOptions": {
+    "types": ["@dcloudio/types", "node"],
+    "isolatedModules": false,
+    "allowJs": true
+  }
+}

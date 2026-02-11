@@ -1,26 +1,33 @@
+import { Suspense } from 'react';
 import { createRoot } from 'react-dom/client';
-import { ErrorBoundary, FallbackProps } from 'react-error-boundary';
+import { ErrorBoundary } from 'react-error-boundary';
 import { RouterProvider } from 'react-router';
 
 import router from './router';
+
+import ErrorFallback from '@/components/error-fallback';
+
 import './style.css';
 
-function ErrorFallback({ error, resetErrorBoundary }: FallbackProps) {
-  const errorMessage = error instanceof Error ? error.message : '未知错误';
+// 全局兜底：捕获未被组件层级捕获的错误
+window.addEventListener('error', event => {
+  console.error('全局未捕获错误：', event.error);
+});
 
-  return (
-    <div role="alert" style={{ padding: '20px', border: '1px solid red', borderRadius: '4px' }}>
-      <h3>😵 出错了！</h3>
-      <p>错误信息：{errorMessage}</p>
-      <button onClick={resetErrorBoundary} style={{ marginTop: '10px' }}>
-        重试
-      </button>
-    </div>
-  );
-}
+window.addEventListener('unhandledrejection', event => {
+  console.error('全局未捕获Promise错误：', event.reason);
+  event.preventDefault();
+});
 
-createRoot(document.getElementById('app')!).render(
-  <ErrorBoundary FallbackComponent={ErrorFallback} onError={error => console.log('错误：', error)}>
-    <RouterProvider router={router} />
+const root = createRoot(document.getElementById('app')!);
+root.render(
+  // 外层ErrorBoundary：捕获RouterProvider本身的渲染错误
+  <ErrorBoundary
+    FallbackComponent={ErrorFallback}
+    onError={(error, info) => console.log('根错误边界捕获：', error, info)}
+  >
+    <Suspense fallback={<div style={{ textAlign: 'center', padding: '50px' }}>加载中...</div>}>
+      <RouterProvider router={router} />
+    </Suspense>
   </ErrorBoundary>
 );

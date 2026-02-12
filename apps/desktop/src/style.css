@@ -1,34 +1,85 @@
-:root {
-  background-color: #242424;
-  color: rgba(255, 255, 255, 0.87);
-  color-scheme: light dark;
-  font-family: Inter, Avenir, Helvetica, Arial, sans-serif;
-  font-size: 16px;
-  -webkit-font-smoothing: antialiased;
-  -moz-osx-font-smoothing: grayscale;
-  font-synthesis: none;
-  font-weight: 400;
-  line-height: 24px;
-  text-rendering: optimizelegibility;
-  text-size-adjust: 100%;
+/* 基础CSS Reset */
+/* 1. 统一盒模型，消除默认内外边距 */
+* {
+  margin: 0;
+  padding: 0;
+  /* 让元素的宽高包含边框和内边距，更易计算 */
+  box-sizing: border-box;
 }
 
+/* 2. 重置列表样式（去掉默认的圆点/数字） */
+ul,
+ol {
+  list-style: none;
+}
+
+/* 3. 重置链接样式（去掉默认下划线，统一颜色继承） */
 a {
-  color: #646cff;
-  font-weight: bold;
-  text-decoration: inherit;
+  text-decoration: none;
+  color: inherit;
 }
 
-a:hover {
-  color: #535bf2;
+/* 4. 重置图片样式（去掉默认空隙，响应式基础） */
+img {
+  /* 去掉图片底部默认的空白缝隙 */
+  vertical-align: middle;
+  /* 图片自适应容器 */
+  max-width: 100%;
+  /* 防止图片拉伸变形 */
+  height: auto;
+  /* 可选：去掉图片默认边框（旧浏览器） */
+  border: none;
 }
 
+/* 5. 重置表单元素（统一表单样式基础） */
+input,
+button,
+textarea,
+select {
+  /* 消除默认边框和背景 */
+  border: none;
+  outline: none;
+  /* 继承页面字体样式 */
+  font-family: inherit;
+  font-size: inherit;
+  /* 消除默认的外观样式（如下拉框的箭头） */
+  appearance: none;
+  -webkit-appearance: none;
+  /* 鼠标悬浮时的样式 */
+  cursor: pointer;
+}
+
+/* 6. 重置表格样式（去掉默认边框间距） */
+table {
+  border-collapse: collapse;
+  border-spacing: 0;
+}
+
+/* 7. 统一字体和文本样式 */
 body {
-  display: flex;
   min-width: 320px;
   min-height: 100vh;
+  /* 消除body默认的margin（不同浏览器可能是8px） */
   margin: 0;
-  place-items: center;
+  /* 防止文本溢出时出现横向滚动条 */
+  overflow-x: hidden;
+  /* 统一行高，提升可读性 */
+  line-height: 1.5;
+  font-size: 16px;
+  color: #333;
+}
+
+/* 8. 清除浮动（解决父元素高度塌陷） */
+.clearfix::after {
+  content: '';
+  display: block;
+  clear: both;
+  height: 0;
+  visibility: hidden;
+}
+
+.clearfix {
+  *zoom: 1; /* 兼容IE6/7 */
 }
 
 h1 {

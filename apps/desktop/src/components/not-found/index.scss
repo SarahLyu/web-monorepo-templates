@@ -12,20 +12,20 @@
 
   &-code {
     margin: 0;
-    color: #dc3545;
+    color: $error-color;
     font-size: 120px;
     font-weight: 700;
   }
 
   &-title {
     margin: 10px 0 20px;
-    color: #212529;
+    color: $text-primary;
     font-size: 28px;
   }
 
   &-desc {
     margin: 0 0 30px;
-    color: #6c757d;
+    color: $text-secondary;
     font-size: 16px;
     line-height: 1.5;
   }
@@ -34,14 +34,14 @@
     display: inline-block;
     padding: 12px 24px;
     border-radius: 6px;
-    background: #0d6efd;
+    background: $primary-color;
     color: #fff;
     font-size: 16px;
     text-decoration: none;
     transition: background-color 0.3s ease;
 
     &:hover {
-      background: #0b5ed7;
+      background: $primary-light;
     }
   }
 }

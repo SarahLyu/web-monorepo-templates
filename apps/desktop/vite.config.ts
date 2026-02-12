@@ -13,6 +13,13 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
+        additionalData: `@import "@/styles/_variables.scss";`,
+        importer: (url: string) => {
+          if (url.startsWith('@/')) {
+            return { file: resolve(__dirname, 'src', url.slice(2)) };
+          }
+          return { file: url };
+        },
       },
     },
   },

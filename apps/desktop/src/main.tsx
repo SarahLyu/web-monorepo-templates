@@ -7,7 +7,7 @@ import router from './router';
 
 import ErrorFallback from '@/components/error-fallback';
 
-import './style.css';
+import './style.scss';
 
 // 全局兜底：捕获未被组件层级捕获的错误
 window.addEventListener('error', event => {

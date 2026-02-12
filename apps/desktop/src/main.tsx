@@ -5,7 +5,7 @@ import { RouterProvider } from 'react-router';
 
 import router from './router';
 
-import ErrorFallback from '@/components/error-fallback';
+import ErrorFallback from '@/components/fallbacks/ErrorFallback';
 
 import './style.scss';
 

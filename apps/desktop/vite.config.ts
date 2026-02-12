@@ -13,7 +13,7 @@ export default defineConfig({
     preprocessorOptions: {
       scss: {
         api: 'modern-compiler',
-        additionalData: `@import "@/styles/_variables.scss";`,
+        additionalData: `@use "@/assets/styles/_variables.scss" as *;`,
         importer: (url: string) => {
           if (url.startsWith('@/')) {
             return { file: resolve(__dirname, 'src', url.slice(2)) };

@@ -1,6 +1,6 @@
 // eslint-disable-next-line import/no-absolute-path
 import typescriptLogo from '/typescript.svg';
-import { Counter } from '../components/counter';
+import { Counter } from '@/components/common/Counter';
 
 const App = () => (
   <div>

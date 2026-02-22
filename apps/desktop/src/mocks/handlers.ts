@@ -1,3 +1,4 @@
+import { faker } from '@faker-js/faker';
 import { http, HttpResponse } from 'msw';
 
 export const handlers = [
@@ -20,7 +21,7 @@ export const handlers = [
 
     sessionStorage.setItem('is-authenticated', 'false');
 
-    return HttpResponse.json({ username: 'admin' });
+    return HttpResponse.json({ name: faker.person.fullName() });
   }),
 
   http.get('/user', () => {
@@ -33,6 +34,6 @@ export const handlers = [
     }
 
     // If authenticated, return a mocked user details
-    return HttpResponse.json({ username: 'admin' });
+    return HttpResponse.json({ name: faker.person.fullName() });
   }),
 ];
